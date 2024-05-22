@@ -1,24 +1,29 @@
 package com.example.entity;
 
-public class employee {
+import java.sql.Date;
+
+public class Employee {
     private int id;
     private String fullName;
-    private String birthday;
+    private Date birthday;
     private String address;
     private String position;
     private String department;
 
-    public employee(int id, String fullName, String birthday, String address, String position, String department) {
+    public Employee() {}
+
+    public Employee(String fullName, Date birthday, String address, String position, String department) {
+        this.fullName = fullName;
+        this.birthday = birthday;
+        this.address = address;
+        this.position = position;
+        this.department = department;
     }
 
-    public employee() {
-
-    }
-
-    // Getters and Setters
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -26,20 +31,23 @@ public class employee {
     public String getFullName() {
         return fullName;
     }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
-    public void setBirthday(String birthday) {
+
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -47,6 +55,7 @@ public class employee {
     public String getPosition() {
         return position;
     }
+
     public void setPosition(String position) {
         this.position = position;
     }
@@ -54,8 +63,8 @@ public class employee {
     public String getDepartment() {
         return department;
     }
+
     public void setDepartment(String department) {
         this.department = department;
     }
 }
-
