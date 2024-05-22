@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/EmployeeDB";
+    private String jdbcHost = "jdbc:mysql://your_remote_host:3306/t2210m";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "password";
+    private String jdbcPassword = "";
 
     private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO Employee (fullName, birthday, address, position, department) VALUES (?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM Employee";
@@ -18,7 +18,7 @@ public class EmployeeDAO {
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            connection = DriverManager.getConnection(jdbcHost, jdbcUsername, jdbcPassword);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -44,7 +44,6 @@ public class EmployeeDAO {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EMPLOYEES)) {
             ResultSet rs = preparedStatement.executeQuery();
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String fullName = rs.getString("fullName");
